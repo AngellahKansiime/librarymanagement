@@ -46,7 +46,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <a href="{{ route('books.create') }}" class="btn btn-outline-primary w-100"> Manage Books</a>
+                    <a href="{{ route('books.index') }}" class="btn btn-outline-primary w-100"> Manage Books</a>
                 </div>
                 <div class="col-md-3 mb-3">
                     <a href="{{ route('students.index') }}" class="btn btn-outline-secondary w-100"> Manage Users</a>

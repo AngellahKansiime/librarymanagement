@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Library management</title>
-    <link rel="stylesheet" href="images/library.jpg">
      <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 </head>
-<body >
+<body style="background-image:url('images/library.jpg')" >
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link " href="{{route('')}}">Login</a>
+          <a class="nav-link " href="#">Login</a>
         </li>
          <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                         @csrf

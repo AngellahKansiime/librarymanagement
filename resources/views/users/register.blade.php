@@ -21,6 +21,9 @@
                  <label for="username">Username</label>
                 <input class="form-control" type="text" id="username" name="username">
 
+                <label for="role">Role</label>
+                <input class="form-control" type="text" id="role" name="role">
+
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
         </div>

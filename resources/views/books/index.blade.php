@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<h2>Table of books</h2>
-<form action="{{route('borrowers.create')}}">
-<button class="btn btn-primary">Borrow a book</button>
+
+<form action="{{route('books.create')}}">
+<button class="btn btn-primary">Add a book</button>
 </form>
 <table>
     <tr>

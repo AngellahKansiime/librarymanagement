@@ -13,7 +13,7 @@ class BorrowerController extends Controller
     public function index()
     {
         $allborrowers= Borrower::all();
-       return view('books',['borrowers'=>$allborrowers]);
+       return view('borrowers.index',['borrowers'=>$allborrowers]);
     }
 
     /**
@@ -47,7 +47,7 @@ class BorrowerController extends Controller
      */
     public function show($id)
     {
-        $book = Borrower::findOrFail($id);  // find the borrower or throw 404 if not found
+        $book = Borrower::findOrFail($id); 
     return view('borrowers.show', compact('borrower'));
     }
 

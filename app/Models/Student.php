@@ -19,4 +19,11 @@ class Student extends Model
         'role'
         
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'password' => 'hashed',
+        ];
+    }
 }

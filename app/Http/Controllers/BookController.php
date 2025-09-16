@@ -46,7 +46,7 @@ class BookController extends Controller
      */
     public function show( $id)
     {
-       $book = Book::findOrFail($id);  // find the book or throw 404 if not found
+       $book = Book::findOrFail($id);  
     return view('books.show', compact('book'));
     }
 
@@ -78,4 +78,40 @@ class BookController extends Controller
     $book->delete();
     return redirect()->route('books.index')->with('success', 'Book deleted successfully!');
     }
+
+    public function returnBook(Request $request, $bookId)
+{
+    $userId = auth()->bookid();
+
+    // Find active borrowing
+    $borrowing = Book::where('user_id', $userId)
+                          ->where('book_id', $bookId)
+                          ->where('status', 'borrowed')
+                          ->first();
+
+    if (!$borrowing) {
+        return back()->with('error', 'No active borrowing found.');
+    }
+
+    // Calculate fine
+    $today = now();
+    $fine = 0;
+    if ($today->gt($borrowing->due_date)) {
+        $daysLate = $today->diffInDays($borrowing->due_date);
+        $fine = $daysLate * 1000; // e.g., 1000 UGX per day
+    }
+
+    // Update borrowing record
+    $borrowing->update([
+        'status' => 'returned',
+        'return_date' => $today,
+        'fine' => $fine,
+    ]);
+
+    // Update book stock
+    $borrowing->book->increment('available_copies');
+
+    return back()->with('success', "Book returned successfully. Fine: $fine");
+}
+
 }

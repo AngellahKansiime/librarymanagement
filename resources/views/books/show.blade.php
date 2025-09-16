@@ -2,8 +2,8 @@
 @section('content')
 <div class="container">
     <h2>Book Details</h2>
-
-    <p><strong>Name:</strong> {{ $book->name }}</p>
+<!-- 
+    <p><strong>Name:</strong> {{ $book->name }}</p> -->
     <p><strong>Book ID:</strong> {{ $book->book_id }}</p>
     <p><strong>Title:</strong> {{ $book->title }}</p>
     <p><strong>Genre:</strong> {{ $book->genre }}</p>

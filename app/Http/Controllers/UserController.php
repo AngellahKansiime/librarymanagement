@@ -18,6 +18,10 @@ class UserController extends Controller
        return view('users.index',['users'=>$allusers]);
     }
 
+    public function showLoginForm(){
+        return view  ('welcome');
+    }
+
     // login
     public function login(Request $request)
     {
@@ -68,23 +72,33 @@ class UserController extends Controller
         //
     }
 
-    
-    /**
-     *logging out a specified resource.
-     */
-    public function logout(User $user)
-    {
-        Auth::logout();
-        return view('welcome');
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(User $user)
     {
-        //
     }
+    /**
+     * Logout the user.
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Logs out the user
+
+        // Invalidate the session
+        $request->session()->invalidate();
+
+        // Regenerate CSRF token
+        $request->session()->regenerateToken();
+
+        // Redirect to login page
+        return redirect()->route('welcome')->with('success', 'You have been logged out successfully.');
+    }
+
+
+    
 
     /**
      * Update the specified resource in storage.

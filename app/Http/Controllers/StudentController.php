@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
+    //  use AuthenticatesUsers;
+    //protected $redirectTo = '/admin/dashboard';
     /**
      * Display a listing of the resource.
      */
@@ -15,6 +17,10 @@ class StudentController extends Controller
     {
         $allstudents= Student::all();
        return view('students.index',['students'=>$allstudents]);
+    }
+
+    public function showlogin(){
+        return view  ('students.login');
     }
 
      public function login(Request $request)
@@ -26,13 +32,17 @@ class StudentController extends Controller
         ]
         );
         if(Auth::attempt($credentials)){
-            return redirect()->route('userlogin');
+            return redirect()->route('students.index');
         }
        else{ return back()->withErrors([
             'username' => 'The provided credentials do not match our records.',
         ]);}
    }
 
+   protected function guard()
+    {
+        return Auth::guard('student');
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -90,6 +100,11 @@ class StudentController extends Controller
     return redirect()->route('students.index')->with('success', 'Student updated successfully!');
     }
     
+    public function logout(Request $request)
+    {
+        Auth::guard('student')->logout();
+        return redirect('/student/login');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -100,4 +115,6 @@ class StudentController extends Controller
     $student->delete();
     return redirect()->route('students.index')->with('success', 'Student deleted successfully!');
     }
+
+
 }

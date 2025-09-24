@@ -4,7 +4,7 @@
 <form action="{{route('users.create')}}">
 <button class="btn btn-primary">Add a user</button>
 </form>
-<table>
+<table class="table table-bordered">
     <tr>
         <th>#</th>
         <th>Name</th>

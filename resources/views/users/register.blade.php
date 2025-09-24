@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form action="{{route('users.index')}}" method="POST" class="form-group">
+            <form action="{{route('users.index')}}" method="POST" class="form-group p-4 border rounded shadow-sm bg-light">
                 @csrf
                 @method('POST')
                 <label for="name">Name</label>

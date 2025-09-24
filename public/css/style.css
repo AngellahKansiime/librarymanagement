@@ -1,0 +1,64 @@
+body::before{
+    background-image: url('/images/library.jpg');
+    margin:0;
+    height:50vh;
+    background-size:cover;
+    background-position:center;
+    background-repeat: no-repeat;
+    opacity:0.9;
+    z-index:-1;
+  
+}
+
+.white {
+    background-color: white;
+    min-height: 400px;
+}
+form {
+    max-width: 500px;
+    margin: 20px auto;
+}
+ 
+
+
+form label {
+    font-weight: bold;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #3a37eb; 
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #1f51d8;
+}
+.bg-pink {
+ 
+    background: url('/images/library.jpg') no-repeat center center;
+    background-size: cover;       
+    min-height: 100vh;            
+}
+/* Colors */
+.bg-pink   { background-color: #e91e63; }
+.text-pink { color: #e91e63; }
+
+/* Pink Button */
+.btn-pink {
+    background-color: #e91e63;
+    color: #fff;
+    border: none;
+}
+.btn-pink:hover {
+    background-color: #c2185b;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh; /* full viewport */
+    background: linear-gradient(135deg, #0b1d36 60%, #e91e63 60%);
+    display: flex;
+    align-items: center;
+}

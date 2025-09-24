@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3 mx-auto">
-            <form action="{{route('students.store')}}" method="POST" class="form-group">
+            <form action="{{route('students.store')}}" method="POST" class="form-group p-4 border rounded shadow-sm bg-light">
                 @csrf
                 @method('POST')
                 <label for="first_name">First Name:</label>

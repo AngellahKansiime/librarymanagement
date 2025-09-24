@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3 mx-auto">
-            <form action="{{route('books.store')}}" method="POST" class="form-group">
+            <form action="{{route('books.store')}}" method="POST" class="form-group p-4 border rounded shadow-sm bg-light">
                 @csrf
                 @method('POST')
                 <label for="title">Title:</label>

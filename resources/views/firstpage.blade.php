@@ -1,28 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Choose Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
-<body class="flex items-center justify-center h-screen bg-gray-100">
+<body>
 
-    <div class="bg-white p-8 rounded-xl shadow-lg text-center space-y-6">
-        <h1 class="text-2xl font-bold text-gray-800">Welcome to the System</h1>
-        <p class="text-gray-600">Please choose how you want to login:</p>
+    <div class="container p-4">
+        <div class="row mx-auto mt-5 white rounded p-4 shadow">
+            
+            <!-- Left: Text / Buttons -->
+            <div class="col-lg-6 text-black text-center text-lg-start">
+                <h1 class="display-5 fw-bold">
+                    A Proud Tradition of <br><span class="text-pink">Knowledge</span>
+                </h1>
+                <p class="lead mb-4">
+                    Manage books, members and records seamlessly.
+                </p>
+                <p>choose how you would like to login</p>
+                <a href="{{ route('adminlogin') }}" class="btn btn-pink btn-lg me-2">Staff</a>
+                <a href="{{ route('login') }}" class="btn btn-pink btn-lg me-2">Student</a>
+                
+            </div>
 
-        <div class="flex justify-center space-x-6">
-            <a href="{{ route('login') }}" 
-               class="px-6 py-3 bg-blue-600 text-black rounded-lg shadow hover:bg-blue-700">
-                Student Login
-            </a>
+            <!-- Right: Hero Image -->
+            <div class="col-lg-6 text-center">
+                <img src="{{ asset('images/hero.jpg') }}" alt="Library" class="rounded img-fluid">
+            </div>
 
-            <a href="{{ route('adminlogin') }}" 
-               class="px-6 py-3 bg-green-600 text-blue rounded-lg shadow hover:bg-green-700">
-               Admin Login
-            </a>
         </div>
     </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

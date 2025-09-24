@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Student extends Model
+class Student extends Authenticatable
 {
       
     protected $fillable = [
@@ -18,6 +19,12 @@ class Student extends Model
         'password',
         'role'
         
+    ];
+
+
+ protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     protected function casts(): array

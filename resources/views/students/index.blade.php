@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
 
-<form action="{{route('students.create')}}">
-<button class="btn btn-primary">Add New Student</button>
+<form action="{{route('students.create')}}" >
+<button class="btn btn-primary ">Add New Student</button>
 </form>
-<table>
+<table class="table table-success table-stripped">
     <tr>
         <th>#</th>
         <th>First Name</th>

@@ -19,6 +19,12 @@ class StudentController extends Controller
        return view('students.index',['students'=>$allstudents]);
     }
 
+
+     public function mystudents(){
+        return view('students.mystudents');
+     }
+
+
     public function showlogin(){
         return view  ('students.login');
     }
@@ -31,12 +37,24 @@ class StudentController extends Controller
             'password'=>"required"
         ]
         );
-        if(Auth::attempt($credentials)){
-            return redirect()->route('students.index');
+//         if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password])) {
+//     // Admin is logged in
+// }
+
+// // To get the currently authenticated admin
+// $admin = Auth::guard('admin')->user();
+
+
+
+        if(Auth::guard('student')->attempt($credentials)){
+            return redirect()->route('mystudents');
+
+    
         }
-       else{ return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ]);}
+       else{ 
+echo "No user found";
+
+       }
    }
 
    protected function guard()

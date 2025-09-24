@@ -18,9 +18,16 @@ Route::get('/', function () {
     return view('firstpage');
 })->name('landing');
 
-// student login
 Route::get('student/login', [StudentController::class, 'showlogin'])->name('login');
-Route::post('st/studentlogin', [StudentController::class,'login'])->name('studentlogin');
+// student login
+Route::middleware('auth:student')->group(function () {
+    // Routes accessible only to authenticated admins
+
+Route::post('student/studentl', [StudentController::class,'login']);
+Route::get('student/mystudents',[StudentController::class,'mystudents'])->name('mystudents');
+
+});
+
 Route::post('admin/logout', [StudentController::class, 'logout'])->name('admin.logout');
 
 // admin login

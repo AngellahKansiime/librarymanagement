@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Library management</title>
      <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
-<body style="background-image:url('images/library.jpg')" >
+<body class="app" >
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">

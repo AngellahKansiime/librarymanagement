@@ -32,11 +32,19 @@ class UserController extends Controller
         ]
         );
         if(Auth::attempt($credentials)){
-            return redirect()->route('users.index');
+
+          return redirect()->route('dashboard');  
+           
         }
        else{ return back()->withErrors([
             'username' => 'The provided credentials do not match our records.',
         ]);}
+   }
+
+
+   public function showAdminDashboard(){
+   //logic for showing summaries on the dashboard
+        return view('dashboard');
    }
     /**
      * Show the form for creating a new resource.

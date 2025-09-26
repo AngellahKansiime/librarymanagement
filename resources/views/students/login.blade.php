@@ -11,7 +11,7 @@
     <div class="container-fluid" >
         <div class="row">
             <div class="col-6 mx-auto">
-    <form action="{{url('student/studentl')}}" method="POST" class="form-group p-4 border rounded shadow-sm bg-light">
+    <form action="{{route('student.login.submit')}}" method="POST" class="form-group p-4 border rounded shadow-sm bg-light">
         @csrf
         @method('POST')
 

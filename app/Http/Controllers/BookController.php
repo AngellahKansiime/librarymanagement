@@ -79,9 +79,9 @@ class BookController extends Controller
     return redirect()->route('books.index')->with('success', 'Book deleted successfully!');
     }
 
-    public function returnBook(Request $request, $bookId)
+    public function returnBook(Request $request, $book_Id)
 {
-    $userId = auth()->bookid();
+    $userId = auth()->book_id();
 
     // Find active borrowing
     $borrowing = Book::where('user_id', $userId)

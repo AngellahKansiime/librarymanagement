@@ -10,7 +10,7 @@
                 <input class="form-control" type="text" id="name" name="name">
 
                 <label for="email">Email</label>
-                <input class="form-control" type="text" id="email" name="email">
+                <input class="form-control" type="text" id="email" name="email" >
 
                 <label for="address">Address</label>
                 <input class="form-control" type="text" id="address" name="address">

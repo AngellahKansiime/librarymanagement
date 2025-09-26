@@ -16,15 +16,15 @@ class DashboardController extends Controller
         $totalBooks = Book::count();
 
         
-        $borrowedBooks = Borrower::whereNull('returned_at')->count();
+        $borrowers = Borrower::whereNull('returned_at')->count();
 
    
         $totalUsers = User::count();
 
         return view('dashboard', compact(
             'totalBooks', 
-            'borrowedBooks', 
-            'totalUsers', 
+            'borrowers', 
+            'totalUsers' 
             
         ));
     }

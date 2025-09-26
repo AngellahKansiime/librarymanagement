@@ -18,22 +18,21 @@ Route::get('/', function () {
     return view('firstpage');
 })->name('landing');
 
-Route::get('student/login', [StudentController::class, 'showlogin'])->name('login');
+
 // student login
 Route::middleware('auth:student')->group(function () {
     // Routes accessible only to authenticated admins
-
-Route::post('student/studentl', [StudentController::class,'login']);
-Route::get('student/mystudents',[StudentController::class,'mystudents'])->name('mystudents');
-
 });
+Route::get('student/login', [StudentController::class, 'showStudentlogin'])->name('login');
+Route::post('/student/login', [StudentController::class, 'login'])->name('student.login.submit');
+Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 
-Route::post('admin/logout', [StudentController::class, 'logout'])->name('admin.logout');
 
 // admin login
-Route::get('welcome', [UserController::class, 'showLoginForm'])->name('adminlogin');
+Route::get('adminlogin', [UserController::class, 'showLoginForm'])->name('adminlogin');
 Route::get('firstpage', [UserController::class,'logout'])->name('logout');
 Route::post('userlogin',[UserController::class,'login'])->name('userlogin');
+Route::get('dashboard', [UserController::class, 'showAdminDashboard'])->name('dashboard');
 
 Route::get('/mydashboard', function () {
     return view('dashboard');

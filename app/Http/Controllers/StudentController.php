@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+
 
 class StudentController extends Controller
 {
@@ -25,7 +28,7 @@ class StudentController extends Controller
      }
 
 
-    public function showlogin(){
+    public function showStudentlogin(){
         return view  ('students.login');
     }
 
@@ -46,8 +49,8 @@ class StudentController extends Controller
 
 
 
-        if(Auth::guard('student')->attempt($credentials)){
-            return redirect()->route('mystudents');
+        if(Auth::attempt(['username' => $request->username, 'password' => $request->password])){
+            return redirect()->route('student.dashboard');
 
     
         }
@@ -55,6 +58,10 @@ class StudentController extends Controller
 echo "No user found";
 
        }
+   }
+   public function dashboard(){
+   
+        return view('students/dashboard');
    }
 
    protected function guard()
@@ -75,18 +82,40 @@ echo "No user found";
     public function store(Request $request)
     {
       
-        $student= new Student();
-        $student->first_name = $request->first_name;
-        $student->last_name = $request->last_name;
-        $student->course = $request->course;
-        $student->year_of_study = $request->year_of_study ;
-        $student->phone = $request->phone;
-        $student->email = $request->email;
-        $student->username = $request->last_name;
-        $student->password = $request->phone;
-        $student->role = $request->role;
-        $student->save();
+       
+        $first_name = $request->first_name;
+        $last_name = $request->last_name;
+        $course = $request->course;
+        $year_of_study = $request->year_of_study ;
+        $phone = $request->phone;
+        $email = $request->email;
+        $username = $request->last_name;
+        $password = $request->phone;
+        $role = $request->role;
 
+        $user = new User();
+        $user->name=$first_name." ".$last_name;
+        $user->username = $username;
+        $user->password = $password;
+        $user->email = $email;
+        $user->role = 'student';
+        $user->save();
+
+        $user->student()->create([
+            "first_name"=>$first_name,
+            "last_name"=>$last_name,
+            "course"=>$course,
+            "year_of_study"=>$year_of_study,
+            "phone"=>$phone,
+            "email"=>$email,
+            "username"=>$username,
+            "password"=>$password,
+            "role"=>$role
+            
+
+        ]);
+       
+           
         return redirect()->route('students.index')->with('success', 'Student registered successfully!');
     }
 

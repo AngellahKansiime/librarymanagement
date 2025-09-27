@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('date_taken');
             $table->string('expected_return');
             $table->string('issued_by');
+            $table->string('status');
             $table->timestamps();
+            $table->enum('status', ['borrowed', 'returned'])->default('borrowed')->after('expected_return');
         });
     }
 

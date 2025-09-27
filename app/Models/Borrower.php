@@ -14,5 +14,6 @@ class Borrower extends Model
         'date_taken',
         'expected_return',
         'issued_by',
+        'status'
     ];
 }

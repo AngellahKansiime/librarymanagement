@@ -12,8 +12,8 @@ class BorrowerController extends Controller
      */
     public function index()
     {
-        $allborrowers= Borrower::all();
-       return view('borrowers.index',['borrowers'=>$allborrowers]);
+       $borrowers = Borrower::orderBy('status')->get();
+        return view('borrowers.index', compact('borrowers'));
     }
 
     /**
@@ -21,8 +21,7 @@ class BorrowerController extends Controller
      */
     public function create()
     {
-        $allbooks= Borrower::all();
-         return view('borrowers.create',['borrower'=>$allbooks]);
+      return view('borrowers.create');
     }
 
     /**
@@ -37,9 +36,23 @@ class BorrowerController extends Controller
         $borrower->date_taken = $request->date_taken ;
         $borrower->expected_return = $request->expected_return;
         $borrower->issued_by = $request->issued_by;
+        $borrower->status = 'borrowed';
         $borrower->save();
 
-        return redirect()->route('borrowers.index')->with('success', 'Borrower recorded successfully!');
+         Borrower::create($request->all());
+
+        return redirect()->route('borrowers.index')
+            ->with('success', 'Book issued successfully!');
+    }
+
+       public function returnBook($id)
+    {
+        $borrow = Borrower::findOrFail($id);
+        $borrow->update([
+            'status' => 'returned'
+        ]);
+
+        return back()->with('success', 'Book returned successfully.');
     }
 
     /**

@@ -8,6 +8,8 @@
         <th>Book</th>
         <th>Date taken</th>
         <th>Expected return</th>
+        <th>Status</th>
+        <th>Book</th>
         
     </tr>
     <tr>
@@ -35,6 +37,23 @@
                             Delete
                         </button>
                     </form>
+                </td>
+                <td>
+                    @if($borrower->status === 'borrowed')
+                        <span class="badge bg-danger">Borrowed</span>
+                    @else
+                        <span class="badge bg-success">Returned</span>
+                    @endif
+                </td>
+                <td>
+                    @if($borrower->status === 'borrowed')
+                        <form method="POST" action="{{ route('borrowers.return', $borrower->id) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-primary">Mark Returned</button>
+                        </form>
+                    @else
+                        <span class="text-muted">Completed</span>
+                    @endif
                 </td>
     </tr>
     @endforeach

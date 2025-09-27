@@ -43,6 +43,8 @@ Route::resource('borrowers', BorrowerController::class);
 Route::resource('students', StudentController::class);
 Route::resource('users', UserController::class);
 
+Route::post('/borrowers/return/{id}', [BorrowerController::class, 'returnBook'])
+    ->name('borrowers.return');
 
 
 

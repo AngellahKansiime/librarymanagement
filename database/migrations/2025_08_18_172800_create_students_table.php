@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('course');
             $table->string('year_of_study');
             $table->string('phone');
+            $table->string('reg_no');
             $table->string('email');
             $table->string('username');
             $table->string('password');

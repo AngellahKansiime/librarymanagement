@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-<form action="{{ route('books.update', $book->id) }}" method="POST">
+<form action="{{ route('books.update', $book->id) }}" method="POST" class="form-group p-4 border rounded-2 shadow-sm bg-light" >
     @csrf
     @method('PUT')
-<!-- 
+<!--
     <label for="name">Name:</label>
     <input class="form-control" type="text" id="name" name="name" value="{{ $book->name }}"> -->
 
@@ -17,8 +17,8 @@
     <input class="form-control" type="text" id="genre" name="genre" value="{{ $book->genre }}">
 
     <label for="author">Author:</label>
-    <input class="form-control" type="text" id="author" name="author" value="{{ $book->author }}">
+    <input class="form-control" type="text" id="author" name="author" value="{{ $book->author }}"><br>
 
-    <button class="btn btn-success" type="submit">Update</button>
+    <button class="btn btn-primary w-100" type="submit">Update</button>
 </form>
-@endsection 
+@endsection

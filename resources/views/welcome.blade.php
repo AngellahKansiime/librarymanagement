@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
-<body >
+<body>
+<div class="login-background">
+
     <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="container-fluid ">
         <div class="row justify-items-center">
             <div class="col-4 mx-auto">
-                <div class="head"><h1>Admin login</h1></div>
+                <div class="head text-center text-primary font-weight-100"><h1>Admin login</h1></div>
     <form action="{{route('userlogin')}}" method="POST" class="form-group p-4 border rounded shadow-sm bg-light">
         @csrf
         @method('POST')
@@ -32,6 +34,7 @@
     </div>
     </div>
     </div>
+</div>
 </body>
 </html>
 

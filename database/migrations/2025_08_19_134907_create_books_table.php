@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('book_id');
             $table->string('genre');
             $table->string('author');
-            $table->string('status');
+            $table->enum('status', ['borrowed', 'available'])->default('available');
             $table->timestamps();
         });
     }

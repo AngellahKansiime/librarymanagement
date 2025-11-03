@@ -8,6 +8,7 @@
     <p><strong>Course:</strong> {{$student->course }}</p>
     <p><strong>Year of study:</strong> {{$student->year_of_study }}</p>
     <p><strong>Phone:</strong> {{ $student->phone }}</p>
+    <p><strong>Reg No:</strong> {{ $student->reg_no }}</p>
     <p><strong>email:</strong> {{$student->email }}</p>
 
     <a href="{{ route('students.index') }}" class="btn btn-secondary">Back to List</a>

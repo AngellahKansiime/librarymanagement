@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Borrower;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $allusers= User::all();
+
+
+        $allusers= User::all()->where('role','!=','student');
        return view('users.index',['users'=>$allusers]);
     }
 
@@ -33,19 +36,18 @@ class UserController extends Controller
         );
         if(Auth::attempt($credentials)){
 
-          return redirect()->route('dashboard');  
-           
+            return redirect()->route('dashboard');
         }
        else{ return back()->withErrors([
             'username' => 'The provided credentials do not match our records.',
         ]);}
    }
+    public function studentsIndex()
+    {
+        $students = \App\Models\Student::all();
+        return view('students.index', compact('students'));
+    }
 
-
-   public function showAdminDashboard(){
-   //logic for showing summaries on the dashboard
-        return view('dashboard');
-   }
     /**
      * Show the form for creating a new resource.
      */
@@ -70,18 +72,13 @@ class UserController extends Controller
 
     return redirect()->route('users.index');
    }
-    
-
-    /**
+   /**
      * Display the specified resource.
      */
     public function show(User $user)
     {
         //
     }
-
-   
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -93,21 +90,13 @@ class UserController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::logout(); // Logs out the user
+        Auth::logout(); // Logs out the current user (admin or student)
 
-        // Invalidate the session
         $request->session()->invalidate();
-
-        // Regenerate CSRF token
         $request->session()->regenerateToken();
 
-        // Redirect to login page
-        return redirect()->route('welcome')->with('success', 'You have been logged out successfully.');
+        return redirect()->route('landing');
     }
-
-
-    
-
     /**
      * Update the specified resource in storage.
      */
@@ -121,6 +110,20 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user = User::findOrFail($user->id);
+        $user->delete();
+        return redirect()->route('users.index');
+
+//        User::destroy($user->id);
     }
+
+    public function viewRequests()
+    {
+        $requests = Borrower::with('book', 'student')
+            ->orderByDesc('created_at')
+            ->get();
+
+        return view('admin.requests', compact('requests'));
+    }
+
 }

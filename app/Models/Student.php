@@ -7,18 +7,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Student extends Authenticatable
 {
-      
+
     protected $fillable = [
         'first_name',
         'last_name',
         'course',
         'year_of_study',
         'phone',
+        'reg_no',
         'email',
         'username',
         'password',
         'role'
-        
+
     ];
 
     public function user(){

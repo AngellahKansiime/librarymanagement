@@ -1,14 +1,24 @@
-body::before{
-    background-image: url('/images/library.jpg');
-    margin:0;
-    height:50vh;
-    background-size:cover;
-    background-position:center;
-    background-repeat: no-repeat;
-    opacity:0.9;
-    z-index:-1;
-  
+
+.bgnav{
+    background-color: #d9dbf0;
 }
+.bgcard{
+    background-color: #d0cdd6;
+}
+.logout-button{
+    align-items:center;
+    justify-content: end;
+}
+
+ .card {
+     transition: transform 0.2s ease-in-out;
+ }
+.card:hover {
+    transform: translateY(-3px);
+}
+
+
+
 
 .white {
     background-color: white;
@@ -18,7 +28,7 @@ form {
     max-width: 500px;
     margin: 20px auto;
 }
- 
+
 
 
 form label {
@@ -27,7 +37,7 @@ form label {
 }
 
 .btn-primary {
-    background-color: #3a37eb; 
+    background-color: #3a37eb;
     border: none;
 }
 
@@ -35,10 +45,10 @@ form label {
     background-color: #1f51d8;
 }
 .bg-pink {
- 
+
     background: url('/images/library.jpg') no-repeat center center;
-    background-size: cover;       
-    min-height: 100vh;            
+    background-size: cover;
+    min-height: 100vh;
 }
 /* Colors */
 .bg-pink   { background-color: #e91e63; }

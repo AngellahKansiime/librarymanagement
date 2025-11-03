@@ -7,23 +7,23 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
-<body>
+<body >
 
     <div class="container p-4">
-        <div class="row mx-auto mt-5 white rounded p-4 shadow">
-            
+        <div class="row mx-auto mt-5 white mb-5 rounded p-4 shadow " >
+
             <!-- Left: Text / Buttons -->
-            <div class="col-lg-6 text-black text-center text-lg-start">
-                <h1 class="display-5 fw-bold">
+            <div class="col-lg-6  text-center text-lg-start">
+                <h1 class="display-5 fw-bold text-pink">
                     A Proud Tradition of <br><span class="text-pink">Knowledge</span>
                 </h1>
-                <p class="lead mb-4">
+                <p class="lead mb-4 text-grey">
                     Manage books, members and records seamlessly.
                 </p>
-                <p>choose how you would like to login</p>
-                <a href="{{ route('adminlogin') }}" class="btn btn-pink btn-lg me-2">Staff</a>
-                <a href="{{ route('login') }}" class="btn btn-pink btn-lg me-2">Student</a>
-                
+                <p class="lead mb-4 text-grey fw-bold">Choose how you would like to login</p>
+                <a href="{{ route('adminlogin') }}" class="btn btn-primary btn-lg me-2">Staff</a>
+                <a href="{{ route('login') }}" class="btn btn-primary btn-lg me-2">Student</a>
+
             </div>
 
             <!-- Right: Hero Image -->

@@ -9,26 +9,29 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('borrowers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('borrowers_id'); // student ID
+            $table->unsignedBigInteger('book_id');
             $table->string('name');
-            $table->string('borrowers_id');
-            $table->string('book');
-            $table->string('date_taken');
-            $table->string('expected_return');
+            $table->date('date_taken');
+            $table->date('expected_return');
             $table->string('issued_by');
-            $table->string('status');
+            $table->enum('status', ['pending', 'borrowed', 'returned', 'rejected'])->default('pending');
             $table->timestamps();
-            $table->enum('status', ['borrowed', 'returned'])->default('borrowed')->after('expected_return');
+
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
         });
+
+
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('borrowers');
     }

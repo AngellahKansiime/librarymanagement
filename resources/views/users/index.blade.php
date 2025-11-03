@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{route('users.create')}}">
+<div class=" col-3 text-start"><form action="{{route('users.create')}}">
 <button class="btn btn-primary">Add a user</button>
-</form>
+    </form> </div>
 <table class="table table-bordered">
     <tr>
         <th>#</th>
@@ -18,7 +18,7 @@
 @foreach($users as $user)
          <?php $number++; ?>
     <tr>
-        <td>{{ $number }}</td> 
+        <td>{{ $number }}</td>
         <td>{{$user->name}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->address}}</td>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<form action="{{ route('borrowers.update', $book->id) }}" method="POST">
+<form action="{{ route('borrowers.update', $borrower->id) }}" method="POST" class="form-group p-4 border rounded-2 shadow-sm bg-light">
     @csrf
     @method('PUT')
 
